@@ -4,13 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.yanjingw.fragmentdemo.R;
+import com.yanjingw.frame.BaseLazyFragment;
 
 
 /**
@@ -22,13 +22,13 @@ import com.yanjingw.fragmentdemo.R;
  activity的onCreate和Fragment的onAttach.onCreate.onCreateView.onActivityCreated关联
  Activity的onDestroy和Fragment的onDestroyView.onDestroy.onDetach关联
 
- 2.
+ 2.onVisible和onInVisible是由BaseLazyFragment复写setUserVisibleHint()进行控制的，此方法在单个Fragment中没有被调用执行。在viewpager的FragmentPagerAdapter被控制执行
 
 
 
 
  */
-public class DemoLifeCycleFragment extends Fragment {
+public class DemoLifeCycleFragment extends BaseLazyFragment {
 
 
     private static final String TAG = "DemoLifeCycleFragment";
@@ -73,6 +73,20 @@ public class DemoLifeCycleFragment extends Fragment {
         super.onResume();
 
         Log.i(TAG, "onResume");
+    }
+
+    @Override
+    protected void onVisible() {
+        super.onVisible();
+
+        Log.i(TAG, "onVisible");
+    }
+
+    @Override
+    protected void onInvisible() {
+        super.onInvisible();
+
+        Log.i(TAG, "onInvisible");
     }
 
     @Override
