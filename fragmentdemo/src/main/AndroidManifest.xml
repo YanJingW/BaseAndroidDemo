@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".lifecycle.SingleFragmentActivity" />
+        <activity android:name=".singlefragment.SingleFragmentActivity" />
+        <activity android:name=".viewpager.ViewPagerActivity"></activity>
     </application>
 
 </manifest>

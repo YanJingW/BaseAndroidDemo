@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FragmentDemo</string>
     <string name="single_fragment_demo">单个fragment生命周期demo</string>
+    <string name="viewpager_fragment_demo">viewpaget+fragment生命周期demo</string>
 </resources>

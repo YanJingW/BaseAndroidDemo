@@ -1,1 +1,1 @@
-include ':app', ':fragmentdemo', ':frame'
+include ':app', ':fragmentdemo', ':frame', ':utils'
