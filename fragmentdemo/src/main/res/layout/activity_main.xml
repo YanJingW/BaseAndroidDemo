@@ -6,10 +6,10 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/fragment_lifecycle"
+        android:id="@+id/fragment_single"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="fragment生命周期demo" />
+        android:text="@string/single_fragment_demo" />
 
 
 </LinearLayout>

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.yanjingw.fragmentdemo.lifecycle.LifeCycleActivity;
+import com.yanjingw.fragmentdemo.lifecycle.SingleFragmentActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        View fragment_lifecycle = findViewById(R.id.fragment_lifecycle);
+        View fragment_lifecycle = findViewById(R.id.fragment_single);
         fragment_lifecycle.setOnClickListener(this);
     }
 
@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
-            case R.id.fragment_lifecycle:
-                startActivity(new Intent(this, LifeCycleActivity.class));
+            case R.id.fragment_single:
+                startActivity(new Intent(this, SingleFragmentActivity.class));
                 break;
         }
     }

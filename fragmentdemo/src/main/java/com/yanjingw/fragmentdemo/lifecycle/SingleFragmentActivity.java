@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.yanjingw.fragmentdemo.R;
 
-public class LifeCycleActivity extends AppCompatActivity {
+public class SingleFragmentActivity extends AppCompatActivity {
 
     private static final String TAG = "LifeCycleActivity";
 
@@ -20,7 +20,7 @@ public class LifeCycleActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        DemoLifeCycleFragment fragment = new DemoLifeCycleFragment();
+        SingleLifeCycleFragment fragment = new SingleLifeCycleFragment();
         fragmentTransaction.add(R.id.rootView, fragment);
         fragmentTransaction.commit();
         Log.i(TAG, "onCreate_after");

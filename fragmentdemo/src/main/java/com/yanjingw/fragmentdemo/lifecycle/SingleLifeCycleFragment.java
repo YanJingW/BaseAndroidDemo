@@ -28,7 +28,7 @@ import com.yanjingw.frame.BaseLazyFragment;
 
 
  */
-public class DemoLifeCycleFragment extends BaseLazyFragment {
+public class SingleLifeCycleFragment extends BaseLazyFragment {
 
 
     private static final String TAG = "DemoLifeCycleFragment";
