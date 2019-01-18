@@ -9,6 +9,11 @@ import android.support.v4.app.Fragment;
  */
 public class BaseLazyFragment extends Fragment {
 
+    /**
+     * 页面的显示状态，用来控制onInvisible()，保持onVisible()和onInvisible()两个生命周期成对出现
+     */
+    private boolean isVisible = false;
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -18,9 +23,15 @@ public class BaseLazyFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (getUserVisibleHint()) {
-            onVisible();
+            if (!isVisible) {
+                isVisible = true;
+                onVisible();
+            }
         } else {
-            onInvisible();
+            if (isVisible) {
+                isVisible = false;
+                onInvisible();
+            }
         }
     }
 

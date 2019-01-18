@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.yanjingw.fragmentdemo.singlefragment.SingleLifeCycleFragment;
 import com.yanjingw.frame.BaseLazyFragment;
+import com.yanjingw.utils.LogUitls;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,9 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return mFragmentTab.get(position);
+        Fragment fragment = mFragmentTab.get(position);
+        LogUitls.i(this, "instantiateItem", fragment);
+        return fragment;
     }
 
     @Override
@@ -43,11 +46,14 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        return super.instantiateItem(container, position);
+        Object o = super.instantiateItem(container, position);
+        LogUitls.i(this, "instantiateItem", o);
+        return o;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
+        LogUitls.i(this, "destroyItem", object);
         super.destroyItem(container, position, object);
     }
 

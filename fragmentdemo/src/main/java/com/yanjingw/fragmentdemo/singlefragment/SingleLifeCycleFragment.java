@@ -51,6 +51,7 @@ public class SingleLifeCycleFragment extends BaseLazyFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         LogUitls.i(TAG, "onCreateView", this);
+        // TODO: 2019/1/18 在onCreateView()中对Fragment完成视图的构建。
         View inflate = inflater.inflate(R.layout.fragment_lifecycle, container, false);
         TextView tv_detail = inflate.findViewById(R.id.tv_detail);
         if (!TextUtils.isEmpty(dataStr)) {

@@ -44,6 +44,7 @@ public class ViewPagerFragment extends BaseLazyFragment {
 
     private void initView() {
         mVpDevice = mFragmentView.findViewById(R.id.vp);
+        mVpDevice.setOffscreenPageLimit(1);
     }
 
     public void setData(List<String> value) {
