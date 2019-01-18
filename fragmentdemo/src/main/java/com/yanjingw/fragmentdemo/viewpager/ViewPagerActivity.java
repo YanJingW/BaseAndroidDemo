@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.yanjingw.fragmentdemo.DataUtils;
 import com.yanjingw.fragmentdemo.R;
 
+/**
+ * viewpager嵌套Fragment的demo
+ */
 public class ViewPagerActivity extends AppCompatActivity {
 
     @Override

@@ -8,18 +8,18 @@ package com.yanjingw.fragmentdemo.viewpager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.yanjingw.fragmentdemo.R;
-import com.yanjingw.frame.BaseLazyFragment;
 import com.yanjingw.utils.LogUitls;
 
 import java.util.List;
 
-public class ViewPagerFragment extends BaseLazyFragment {
+public class ViewPagerFragment extends Fragment {
 
     public static final String TAG = ViewPagerFragment.class.getSimpleName();
 

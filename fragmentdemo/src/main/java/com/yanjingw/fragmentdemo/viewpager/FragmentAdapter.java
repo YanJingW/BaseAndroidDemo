@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
-import com.yanjingw.fragmentdemo.singlefragment.SingleLifeCycleFragment;
-import com.yanjingw.frame.BaseLazyFragment;
 import com.yanjingw.utils.LogUitls;
 
 import java.util.ArrayList;
@@ -15,12 +13,12 @@ import java.util.List;
 
 public class FragmentAdapter extends FragmentPagerAdapter {
     private final FragmentManager fm;
-    private final BaseLazyFragment parent;
+    private final Fragment parent;
     private Context mContext;
     private List<Fragment> mFragmentTab = new ArrayList<>();
     private List<String> tableTitle = new ArrayList<>();
 
-    public FragmentAdapter(BaseLazyFragment parent, FragmentManager fm, Context context) {
+    public FragmentAdapter(Fragment parent, FragmentManager fm, Context context) {
         super(fm);
         this.parent = parent;
         this.fm = fm;
@@ -59,7 +57,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
     public void setData(List<String> secondTabData) {
         for (int i = 0; i < secondTabData.size(); i++) {
-            SingleLifeCycleFragment deviceFragment = new SingleLifeCycleFragment();
+            ViewpagerLifeCycleFragment deviceFragment = new ViewpagerLifeCycleFragment();
             deviceFragment.setData(secondTabData.get(i));
             mFragmentTab.add(deviceFragment);
             tableTitle.add("第" + i + "页");
