@@ -20,7 +20,8 @@ public class SingleFragmentActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        SingleLifeCycleFragment fragment = new SingleLifeCycleFragment();
+        LifeCycleFragment fragment = new LifeCycleFragment();
+        fragment.setData(this.getBaseContext().getResources().getString(R.string.single_fragment_demo));
         fragmentTransaction.add(R.id.rootView, fragment);
         fragmentTransaction.commit();
         LogUitls.i(TAG, "onCreate_after", this);
@@ -36,8 +37,6 @@ public class SingleFragmentActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         LogUitls.i(TAG, "onResume", this);
-
-
     }
 
     @Override

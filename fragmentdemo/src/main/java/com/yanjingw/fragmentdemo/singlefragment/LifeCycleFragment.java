@@ -1,4 +1,4 @@
-package com.yanjingw.fragmentdemo.viewpager;
+package com.yanjingw.fragmentdemo.singlefragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,20 +11,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yanjingw.fragmentdemo.R;
-import com.yanjingw.frame.BaseLazyViewPagerFragment;
+import com.yanjingw.frame.BaseLazyLoadFragment;
 import com.yanjingw.utils.LogUitls;
 
 
 /**
  * 1.onVisible和onInVisible是由BaseLazyViewPagerFragment复写setUserVisibleHint()进行控制的，此方法在单个Fragment中没有被调用执行。在viewpager的FragmentPagerAdapter被控制执行
  */
-public class ViewpagerLifeCycleFragment extends BaseLazyViewPagerFragment {
+public class LifeCycleFragment extends BaseLazyLoadFragment {
 
-    public static final String TAG = ViewpagerLifeCycleFragment.class.getSimpleName();
+    public static final String TAG = LifeCycleFragment.class.getSimpleName();
     private String dataStr;
-    private View inflate;
+    private TextView tv_detail;
 
-    public ViewpagerLifeCycleFragment() {
+    public LifeCycleFragment() {
         LogUitls.i(TAG, "new", this);
     }
 
@@ -51,14 +51,15 @@ public class ViewpagerLifeCycleFragment extends BaseLazyViewPagerFragment {
 
     @Override
     protected View setContentView(LayoutInflater inflater, ViewGroup container) {
-        inflate = inflater.inflate(R.layout.fragment_lifecycle, container, false);
+        View inflate = inflater.inflate(R.layout.fragment_detail, container, false);
+        tv_detail = inflate.findViewById(R.id.tv_detail);
+        tv_detail.setText("从内存中取得的数据");
         return inflate;
     }
 
     @Override
-    protected void onVisibleWithViewPrepared() {
-        LogUitls.i(TAG, "onVisibleWithViewPrepared", this);
-        TextView tv_detail = inflate.findViewById(R.id.tv_detail);
+    protected void onLoadData() {
+        LogUitls.i(TAG, "onLoadData", this);
         if (!TextUtils.isEmpty(dataStr)) {
             tv_detail.setText(dataStr);
         }

@@ -15,7 +15,7 @@ import android.view.ViewGroup;
  * 懒加载
  * 子类不能复写onCreateView()方法
  */
-public abstract class BaseLazyViewPagerFragment extends Fragment {
+public abstract class BaseLazyLoadFragment extends Fragment {
 
     /**
      * 页面的显示状态，用来控制onInvisible()，保持onVisible()和onInvisible()两个生命周期成对出现
@@ -27,12 +27,25 @@ public abstract class BaseLazyViewPagerFragment extends Fragment {
      */
     private boolean mIsViewInit = false;
 
+    /**
+     * 是否需要懒加载
+     */
+    private Boolean isEnableLazyLoad = false;
+
+    public void setEnableLazyLoad(Boolean isEnableLazyLoad) {
+        this.isEnableLazyLoad = isEnableLazyLoad;
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View mFragmentView = setContentView(inflater, container);
+        View rootView = setContentView(inflater, container);
         mIsViewInit = true;
-        tryLazyLoad();
-        return mFragmentView;
+        if (isEnableLazyLoad) {
+            tryLazyLoad();
+        } else {
+            onLoadData();
+        }
+        return rootView;
     }
 
     @Override
@@ -67,17 +80,18 @@ public abstract class BaseLazyViewPagerFragment extends Fragment {
 
     /**
      * 根据对ViewPager中Fragment的生命周期的表现，当Fragment对用户可见时，onVisible和onCreateView的执行顺序不能保证。所以必须两个方法都被调用。
+     * 懒加载的核心方法，Fragment完成视图的构建并且Fragment对用户可见
      */
     private void tryLazyLoad() {
         if (isVisible && mIsViewInit) {
-            onVisibleWithViewPrepared();
+            onLoadData();
         }
     }
 
     /**
-     * 懒加载的核心方法，Fragment完成视图的构建并且Fragment对用户可见
+     * 加载数据的核心方法，Fragment完成视图的构建并且Fragment对用户可见
      */
-    protected abstract void onVisibleWithViewPrepared();
+    protected abstract void onLoadData();
 
     /**
      * 只能在此方法中完成对View的初始化，此方法被onCreateView控制调用

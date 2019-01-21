@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
+import com.yanjingw.fragmentdemo.singlefragment.LifeCycleFragment;
 import com.yanjingw.utils.LogUitls;
 
 import java.util.ArrayList;
@@ -57,7 +58,8 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
     public void setData(List<String> secondTabData) {
         for (int i = 0; i < secondTabData.size(); i++) {
-            ViewpagerLifeCycleFragment deviceFragment = new ViewpagerLifeCycleFragment();
+            LifeCycleFragment deviceFragment = new LifeCycleFragment();
+            deviceFragment.setEnableLazyLoad(true);
             deviceFragment.setData(secondTabData.get(i));
             mFragmentTab.add(deviceFragment);
             tableTitle.add("第" + i + "页");
